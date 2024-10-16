@@ -30,7 +30,7 @@ async function addTestCase(title, description) {
 
 // Function to fetch and display existing test cases
 async function fetchTestCases() {
-    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/test-cases/test-cases`, {
+    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/test-cases`, {
         headers: {
             'Authorization': `token ${token}`
         }
