@@ -13,14 +13,14 @@ jobs:
 
       - name: Create Test Case
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use your secret here
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # Use your secret here
         run: |
           FILE_NAME="$1"
           CONTENT="$2"
           echo "$CONTENT" | base64 > encoded_content.txt
           BASE64_CONTENT=$(cat encoded_content.txt)
 
-          curl -X PUT -H "Authorization: Bearer $GH_TOKEN" \
+          curl -X PUT -H "Authorization: Bearer $GITHUB_TOKEN" \
           -H "Accept: application/vnd.github+json" \
           -H "Content-Type: application/json" \
           -d "{\"message\": \"Add test case: $FILE_NAME\", \"content\": \"$BASE64_CONTENT\", \"branch\": \"main\"}" \
