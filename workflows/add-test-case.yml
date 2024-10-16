@@ -1,30 +1,28 @@
-name: Deploy to GitHub Pages
+name: Save Test Case
 
 on:
-  push:
-    branches:
-      - main  # Set to your default branch
+  workflow_dispatch:
+  repository_dispatch:
 
 jobs:
-  deploy:
+  save-test-case:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+      - name: Create Test Case
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use your secret here
+        run: |
+          FILE_NAME="$1"
+          CONTENT="$2"
+          echo "$CONTENT" | base64 > encoded_content.txt
+          BASE64_CONTENT=$(cat encoded_content.txt)
 
-      - name: Install dependencies
-        run: npm install
+          curl -X PUT -H "Authorization: Bearer $GH_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          -H "Content-Type: application/json" \
+          -d "{\"message\": \"Add test case: $FILE_NAME\", \"content\": \"$BASE64_CONTENT\", \"branch\": \"main\"}" \
+          https://api.github.com/repos/Andranik1994/gitest/contents/test-cases/$FILE_NAME
 
-      - name: Build project
-        run: npm run build  # Adjust if you have a build process
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./  # Change if your build output is in a different folder
