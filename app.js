@@ -38,7 +38,7 @@ async function saveTestCase(fileName, content) {
             branch: 'main'  // Specify your branch here
         })
     });
-
+    console.log(fileName)
     if (response.ok) {
         console.log('Test case saved successfully!');
     } else {
