@@ -1,4 +1,4 @@
-const token = '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'; 
+const token = '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'; 
 const repoOwner = 'Andranik1994';
 const repoName = 'gitest';
 
