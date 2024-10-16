@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Case Management</title>
+    <title>Test Case Manager</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional for styling -->
 </head>
 <body>
-    <h1>Test Case Management</h1>
-    <form id="addTestCaseForm">
-        <input type="text" id="testCaseTitle" placeholder="Test Case Title" required>
-        <textarea id="testCaseDescription" placeholder="Test Case Description" required></textarea>
+    <h1>Test Case Manager</h1>
+    <form id="testCaseForm">
+        <label for="testCaseName">Test Case Name:</label>
+        <input type="text" id="testCaseName" name="testCaseName" required>
+        
+        <label for="testCaseDescription">Description:</label>
+        <textarea id="testCaseDescription" name="testCaseDescription" required></textarea>
+        
         <button type="submit">Add Test Case</button>
     </form>
-    <h2>Existing Test Cases</h2>
-    <div id="testCasesList"></div>
+    <h2>Test Cases</h2>
+    <ul id="testCaseList"></ul>
 
-    <script src="app.js"></script>
+    <script src="app.js"></script> <!-- Link to your JS file -->
 </body>
 </html>
