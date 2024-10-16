@@ -29,7 +29,7 @@ async function saveTestCase(fileName, content) {
     const response = await fetch(`https://api.github.com/repos/Andranik1994/gitest/contents/test-cases/${fileName}`, {
         method: 'PUT',
         headers: {
-            'Authorization': `Bearer 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`,  // Replace with your token
+            'Authorization': `Bearer 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`,  // Replace with your token
             'Accept': 'application/vnd.github+json'
         },
         body: JSON.stringify({
