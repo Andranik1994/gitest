@@ -8,7 +8,7 @@ async function addTestCase(title, description) {
     const fileName = `test-cases/${title.replace(/\s+/g, '_')}.md`;
     const encodedContent = btoa(unescape(encodeURIComponent(content)));
 
-    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${fileName}`, {
+    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/test-cases/${fileName}`, {
         method: 'PUT',
         headers: {
             'Authorization': `token ${token}`,
@@ -30,7 +30,7 @@ async function addTestCase(title, description) {
 
 // Function to fetch and display existing test cases
 async function fetchTestCases() {
-    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/test-cases`, {
+    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/test-cases/test-cases`, {
         headers: {
             'Authorization': `token ${token}`
         }
