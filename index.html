@@ -1,7 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Case Management</title>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <h1>Test Case Management</h1>
+    <form id="addTestCaseForm">
+        <input type="text" id="testCaseTitle" placeholder="Test Case Title" required>
+        <textarea id="testCaseDescription" placeholder="Test Case Description" required></textarea>
+        <button type="submit">Add Test Case</button>
+    </form>
+    <h2>Existing Test Cases</h2>
+    <div id="testCasesList"></div>
+
+    <script src="app.js"></script>
 </body>
 </html>
