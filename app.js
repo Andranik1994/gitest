@@ -26,7 +26,7 @@ document.getElementById('testCaseForm').addEventListener('submit', function(e) {
 async function saveTestCase(fileName, content) {
     // Note: This requires setting up GitHub API access. You'll need a GitHub token with permissions to push to your repository.
     
-    const response = await fetch(`https://api.github.com/repos/Andranik1994/gitest/test-cases/${fileName}`, {
+    const response = await fetch(`https://api.github.com/repos/Andranik1994/gitest/contents/test-cases/${fileName}`, {
         method: 'PUT',
         headers: {
             'Authorization': `token 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`,  // Replace with your token
