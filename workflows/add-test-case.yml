@@ -1,0 +1,31 @@
+name: Add Test Case
+
+on:
+  workflow_dispatch: # Manually trigger the workflow
+  push: # Automatically trigger the workflow when changes are pushed to the repo
+    branches:
+      - main
+
+jobs:
+  add-test-case:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Add Test Case
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} # Access the secret stored in GitHub Secrets
+      run: |
+        # Create a new test case file using a random name for demonstration
+        TEST_CASE_FILE="test-cases/TC_$(date +%s).md"
+        echo "# New Test Case" > $TEST_CASE_FILE
+        echo "- **Description**: Sample test case description." >> $TEST_CASE_FILE
+
+        # Commit and push the new test case file
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add $TEST_CASE_FILE
+        git commit -m "Add new test case"
+        git push
